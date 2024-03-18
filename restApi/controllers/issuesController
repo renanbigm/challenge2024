@@ -1,0 +1,19 @@
+const getAllIssues = (req, res) => {
+    res.json("here i'm");
+};
+
+const createIssue = (req, res) => {
+};
+
+const updateIssue = (req, res) => {
+};
+
+const deleteIssue = (req, res) => {
+};
+
+module.exports = {
+  getAllIssues,
+  createIssue,
+  updateIssue,
+  deleteIssue,
+};
