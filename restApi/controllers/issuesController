@@ -1,21 +1,51 @@
-const getAllIssues = (req, res) => {
-    const issues = issueService.getAllIssues();
+const issueService = require('../services/issuesServices');
 
-    res.json(issues);
+const getAllIssues = (req, res) => {
+    try {
+        const issues = issueService.getAllIssues();
+        res.json(issues);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 };
 
 const createIssue = (req, res) => {
+    const { title, description } = req.body;
+
+    try {
+        const newIssue = issueService.createIssue(title, description);
+        res.status(201).json(newIssue);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
 };
 
 const updateIssue = (req, res) => {
+    const { id } = req.params;
+    const { title, description } = req.body;
+
+    try {
+        const updatedIssue = issueService.updateIssue(parseInt(id), title, description);
+        res.json(updatedIssue);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
 };
 
 const deleteIssue = (req, res) => {
+    const { id } = req.params;
+
+    try {
+        issueService.deleteIssue(+id);
+        res.json(`Issue with id: ${id}, was deleted`);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
 };
 
 module.exports = {
-  getAllIssues,
-  createIssue,
-  updateIssue,
-  deleteIssue,
+    getAllIssues,
+    createIssue,
+    updateIssue,
+    deleteIssue,
 };
