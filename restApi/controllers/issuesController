@@ -1,5 +1,7 @@
 const getAllIssues = (req, res) => {
-    res.json("here i'm");
+    const issues = issueService.getAllIssues();
+
+    res.json(issues);
 };
 
 const createIssue = (req, res) => {
