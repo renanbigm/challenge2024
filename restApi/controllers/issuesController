@@ -1,0 +1,21 @@
+const getAllIssues = (req, res) => {
+    const issues = issueService.getAllIssues();
+
+    res.json(issues);
+};
+
+const createIssue = (req, res) => {
+};
+
+const updateIssue = (req, res) => {
+};
+
+const deleteIssue = (req, res) => {
+};
+
+module.exports = {
+  getAllIssues,
+  createIssue,
+  updateIssue,
+  deleteIssue,
+};
